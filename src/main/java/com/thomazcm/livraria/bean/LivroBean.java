@@ -1,6 +1,7 @@
 package com.thomazcm.livraria.bean;
 
 import javax.faces.bean.ManagedBean;
+import com.thomazcm.livraria.model.Livro;
 
 @ManagedBean
 public class LivroBean {
