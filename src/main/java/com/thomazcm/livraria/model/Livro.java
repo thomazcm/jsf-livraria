@@ -1,17 +1,23 @@
 package com.thomazcm.livraria.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Livro {
+public class Livro implements Serializable{
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
@@ -20,11 +26,19 @@ public class Livro {
     private String titulo;
     private String isbn;
     private double preco;
-    private String dataLancamento;
-
-    @ManyToMany(fetch = FetchType.EAGER)
+    @Temporal(TemporalType.DATE)
+    private Calendar dataLancamento = Calendar.getInstance();
+    @ManyToMany
     private List<Autor> autores = new ArrayList<Autor>();
 
+    public Calendar getDataLancamento() {
+        return this.dataLancamento;
+    }
+    
+    public void setDataLancamento(Calendar dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
+    
     public List<Autor> getAutores() {
         return autores;
     }
@@ -65,14 +79,6 @@ public class Livro {
 
     public void setPreco(double preco) {
         this.preco = preco;
-    }
-
-    public String getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(String dataLancamento) {
-        this.dataLancamento = dataLancamento;
     }
 
 }
