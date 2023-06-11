@@ -16,10 +16,8 @@ public class DAO<T> {
 
         // consegue a entity manager
         EntityManager em = new JPAUtil().getEntityManager();
-
         // abre transacao
         em.getTransaction().begin();
-
         // persiste o objeto
         em.persist(t);
 
