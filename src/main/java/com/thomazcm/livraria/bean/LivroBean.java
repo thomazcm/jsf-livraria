@@ -21,22 +21,6 @@ public class LivroBean implements Serializable{
     private Livro livro = new Livro();
     private Integer autorId;
 
-    public Livro getLivro() {
-        return livro;
-    }
-
-    public List<Autor> getAutores() {
-        return new DAO<Autor>(Autor.class).listaTodos();
-    }
-
-    public List<Autor> getAutoresDoLivro() {
-        return Collections.unmodifiableList(this.livro.getAutores());
-    }
-
-    public List<Livro> getLivrosCadastrados() {
-        return new DAO<Livro>(Livro.class).listaTodos();
-    }
-
     public void gravar() {
 
         if (livro.getAutores().isEmpty()) {
@@ -63,6 +47,22 @@ public class LivroBean implements Serializable{
 
     public Integer getAutorId() {
         return this.autorId;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public List<Autor> getAutores() {
+        return new DAO<Autor>(Autor.class).listaTodos();
+    }
+
+    public List<Autor> getAutoresDoLivro() {
+        return Collections.unmodifiableList(this.livro.getAutores());
+    }
+
+    public List<Livro> getLivrosCadastrados() {
+        return new DAO<Livro>(Livro.class).listaTodos();
     }
 
     public void setAutorId(Integer autorId) {
